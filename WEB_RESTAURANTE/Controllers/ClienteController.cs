@@ -6,17 +6,25 @@ namespace WEB_RESTAURANTE.Controllers
 {
     public class ClienteController : Controller
     {
+        private readonly AplicacionContexto context;
+        public ClienteController(AplicacionContexto context)
+        {
+            this.context = context;
+            
+        }
+
         public async Task<IActionResult> Index()
         {
+            var dao = new DaoCliente(context);
 
-            using (var context = new AplicacionContexto())
-            {
-                var dao = new DaoCliente(context);
+            var clientes = await dao.ListaCategoria();
 
-                var clientes = await dao.ListaCategoria();
+            return View();
+        }
 
-               
-            }
+        public async Task<IActionResult> Form()
+        {
+            
 
             return View();
         }

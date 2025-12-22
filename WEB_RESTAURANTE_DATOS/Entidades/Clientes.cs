@@ -21,6 +21,10 @@ namespace WEB_RESTAURANTE_DATOS.Entidades
 
         [Column(TypeName = "varchar(50)")]
         public string Destino { get; set; }
+        [Column(TypeName = "varchar(50)")]
+        public string Destino3 { get; set; }
+        [Column(TypeName = "varchar(50)")]
+        public string Destino4 { get; set; }
 
     }
 }

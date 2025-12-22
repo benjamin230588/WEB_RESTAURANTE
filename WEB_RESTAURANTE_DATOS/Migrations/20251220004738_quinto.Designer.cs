@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB_RESTAURANTE_DATOS;
 
@@ -10,13 +11,15 @@ using WEB_RESTAURANTE_DATOS;
 namespace WEB_RESTAURANTE_DATOS.Migrations
 {
     [DbContext(typeof(AplicacionContexto))]
-    partial class AplicacionContextoModelSnapshot : ModelSnapshot
+    [Migration("20251220004738_quinto")]
+    partial class quinto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.11")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -56,30 +59,6 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cliente");
-                });
-
-            modelBuilder.Entity("WEB_RESTAURANTE_DATOS.Entidades.Usuarios", b =>
-                {
-                    b.Property<int>("idusuario")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idusuario"));
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("Pasword")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<int?>("idcorrelativo")
-                        .HasColumnType("int");
-
-                    b.HasKey("idusuario");
-
-                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }

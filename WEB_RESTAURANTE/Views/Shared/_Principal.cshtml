@@ -1,0 +1,100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Principal</title>
+    <link rel="stylesheet" href="~/css_boo/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css">
+
+</head>
+<body>
+
+    <div class="wrapperIII">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand navbar-dark bg-primary" id="barra">
+            
+            <img src="~/imagenes/LOGO.png" style="width:15rem ; height:50px" />&nbsp &nbsp
+            <a class="sidebar-toggle mr-3" id="sidebarCollapse" href="#">DDDD</a>
+
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item dropdown">
+                        <a href="#"
+                           class="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false"
+                           style="color:white">
+                            <i class="fa fa-user"></i> ADMIN
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Salir</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+      
+        <div class="vertical-nav bg-white caja3" id="sidebar">
+            <div class="sidebar sidebar-dark bg-dark" id="barra2">
+                <ul class="list-unstyled">
+
+
+                    <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-fw fa-tachometer-alt"></i> Inicio</a></li>
+                  
+                    <li>
+                        <a href="#"
+                           data-bs-toggle="collapse"
+                           data-bs-target="#sm_reporte_2"
+                           aria-expanded="false">
+                            <i class="fa fa-fw fa-cube"></i> Reportes 2
+                        </a>
+
+                        <ul id="sm_reporte_2" class="list-unstyled collapse">
+                            <li><a href="@Url.Action("Index","CEpedidos")">Pedidos</a></li>
+                            <li><a href="@Url.Action("Index","Liquidacion")">Liquidación</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+        <!--CONTENIDO-->
+       
+        <div class="page-content p-3 contenedor">
+           
+          
+                @RenderBody()
+            
+          
+        </div>
+        <footer class"ss">
+           
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Version</b> 1.0.0.2
+            </div>
+            <p>
+                lore mm
+                ssss
+            </p>
+        </footer>
+       
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="~/js_boo/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

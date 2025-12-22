@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB_RESTAURANTE_DATOS;
 
@@ -10,9 +11,11 @@ using WEB_RESTAURANTE_DATOS;
 namespace WEB_RESTAURANTE_DATOS.Migrations
 {
     [DbContext(typeof(AplicacionContexto))]
-    partial class AplicacionContextoModelSnapshot : ModelSnapshot
+    [Migration("20251221220021_septimo")]
+    partial class septimo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

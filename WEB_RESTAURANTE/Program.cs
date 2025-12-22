@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using WEB_RESTAURANTE_DATOS;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddDbContext<AplicacionContexto>(options =>
+                          options.UseSqlServer("name=defaultConnection"));
 
 var app = builder.Build();
 
@@ -22,7 +28,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Login}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

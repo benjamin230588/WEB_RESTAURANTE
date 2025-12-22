@@ -1,8 +1,141 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h1>Index login</h1>
-<img src="/imagenes/images11.png" />
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/css_boo/bootstrap.min.css" />
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb 10%, #8360c3 80% );
+            
+        }
+
+        #boton {
+            background-color: blueviolet;
+            color: white;
+        }
+
+        .mdc-card {
+            /*box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.12), 0px 1px 5px -2px rgba(0, 0, 0, 0.14);*/
+            box-shadow: 0 1px 6px -1px rgba(0, 0, 0, 0.15);
+            /*display: flex;
+                flex-direction: column;
+                justify-content: flex-end;*/
+            box-sizing: border-box;
+            padding: 20px;
+            border-radius: 2px;
+            overflow: hidden;
+            background-color: #fff;
+            /*width:25rem;*/
+            /*margin: auto;*/
+            margin-top: 50px;
+            /*height: 100vh;*/
+            /*min-height: calc(100vh - 85px);*/
+        }
+
+        .pcss {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+  
+    <div class="form-row">
+        <div class="col-md-4 offset-md-4 ">
+            <div class="mdc-card">
+
+                <form id="forminicio" method="POST" asp-action="Inicio" asp-controller="Login" autocomplete="off">
+
+                 <div style="margin:0px auto;  text-align:center">
+                    <img src="~/imagenes/login24.png" style="width:200px ; height:auto" />
+                   
+                  </div>
+                   <br />
+                    <div class="form-row">
+                        <div class="col-md-12 col-12">
+
+                            <input type="text" class="form-control" name="Usuario" id="Usuario" maxlength="10" placeholder="Usuario" required autofocus>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-row">
+                        <div class="col-md-12 col-12">
+                            <input type="password" class="form-control" name="pasword" id="pasword" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-row">
+
+                        <div class="col-md-12 col-12">
+                            <button id="boton" class="form-control" type="submit">Ingresar</button>
+                        </div>
+                    </div>
+
+                    <br />
+                    <br />
+                   
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="~/js_boo/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            
+            let cadena =$("#Usuario").val();
+            //alert(cadena);
+        });
+
+        $("#forminicio").submit(function (evento) {
+            // var form = $(this);
+            //DESACTIVO LOS EVENTOS NATIVOS 
+         evento.preventDefault();
+            /// console.log("soy",this);
+
+        var data = { "usuario": $("#Usuario").val(), "pasword": $("#pasword").val() };
+        //var dialog = mostrarcarga();
+        //var data = { "usuario":$("#usuario").val() ,"password":$("#password").val(),"company":$("#company").val()};
+        var url = "@Url.Action("Inicio", "Login")";
+
+         $.ajax({
+            url: url,
+            type: "POST",
+            data: data,
+
+            success: function (datos) {
+              
+                if (datos.success) {
+                   
+                     let url = '@Url.Action("Index", "Home")';
+                     window.location.href = url;
+                }
+                else {
+                   alert("errr");
+                }
+
+
+            }
+        });
+           
+
+        });
+
+    </script>
+</body>
+</html>

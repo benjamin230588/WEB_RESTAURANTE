@@ -1,0 +1,141 @@
+﻿<script type="text/javascript">
+
+    
+
+
+    function showDialog() {
+        var dialog = bootbox.dialog({
+            message: '<div class="text-center"><img src="/imagenes/cargar.gif" /> </div>',
+            closeButton: false,
+
+        });
+        return dialog;
+    }
+
+    function mostrarcarga() {
+        var alerta = bootbox.alert({
+            message: '<div class="text-center"><img src="/imagenes/cargar.gif" /> </div>',
+            closeButton: false,
+            buttons: {
+                ok: {
+                    label: 'Yes',
+                    className: 'pcss'
+                },
+
+            },
+
+
+        });
+        return alerta;
+
+    }
+
+    function mostrarlogin() {
+        var alerta = bootbox.alert({
+            message: '<div class="text-center"><img src="/conplemento/ben234.gif" /> </div>',
+            closeButton: false,
+            buttons: {
+                ok: {
+                    label: 'Yes',
+                    className: 'pcss'
+                },
+
+            },
+
+
+        });
+        return alerta;
+
+    }
+
+    function showConfirm(title, message, callbackFn) {
+        bootbox.confirm({
+                title: title,
+                message: message,
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> Cancelar'
+                    },
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Confirmar'
+                    }
+                },
+                callback: callbackFn
+            });
+    }
+
+    function ajaxCall(url, method, callbackFn) {
+        url = resolveUrl(url);
+        $.ajax({
+            url: url,
+            type: method,
+            processData: false,
+            contentType: false,
+            success: callbackFn,
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            }
+        });
+    }
+
+    function ajaxPost(url, method, bodyData, callbackFn) {
+        url = resolveUrl(url);
+        $.ajax({
+            url: url,
+            type: method,
+            data: bodyData,
+            processData: false,
+            contentType: false,
+            success: callbackFn,
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            }
+        });
+    }
+
+    function ajaxJSONPost(url, method, bodyData, callbackFn) {
+        url = resolveUrl(url);
+        $.ajax({
+            url: url,
+            type: method,
+            data: bodyData,
+            processData: false,
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            success: callbackFn,
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Error: " + textStatus + " " + errorThrown + " " + httpRequest);
+            }
+        });
+    }
+
+    function callWebService(url, callback, method) {
+        var xhttp;
+        xhttp=new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                callback(this);
+            }
+        };
+        xhttp.open(method, url, true);
+        xhttp.send();
+    }
+
+
+    function redirectTo(path) {
+        window.location.href = '@(Url.Content("~/"))' + path;
+    }
+
+    function resolveUrl(url) {
+        console.log("Origin => " + url);
+        if(!url.includes("http")){
+            url = '@(Url.Content("~/"))' + url;
+            url = url.replace("//", "/");
+            console.log("Destiny => " + url);
+        }
+
+        return url;
+    }
+
+</script>
+
