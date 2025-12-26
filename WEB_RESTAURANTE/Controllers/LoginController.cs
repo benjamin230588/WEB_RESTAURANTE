@@ -35,7 +35,9 @@ namespace WEB_RESTAURANTE.Controllers
                 if (model != null)
                 {
 
-                    
+                    response.success = true;
+                    response.error = "usuario encontrado";
+
 
 
                 }

@@ -26,6 +26,7 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+//el end point es el ultimo en ejecutarse el orden importa esto ejecuta el controlador y nada mas continua 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Login}/{action=Index}/{id?}")
