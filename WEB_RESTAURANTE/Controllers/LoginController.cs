@@ -30,6 +30,8 @@ namespace WEB_RESTAURANTE.Controllers
             try
             {
                 var dao = new DaoUsuario(context);
+                //Thread.Sleep(20000);
+                //await Task.Delay(5000);
                 model = await dao.LoginUsuario(usuario, pasword);
                 // sistema s web
                 if (model != null)
@@ -45,7 +47,7 @@ namespace WEB_RESTAURANTE.Controllers
                 {
 
                     response.success = false;
-                    response.error = "usuario no encontrado";
+                    response.error = "Usuario No Encontrado Error";
 
                 }
 

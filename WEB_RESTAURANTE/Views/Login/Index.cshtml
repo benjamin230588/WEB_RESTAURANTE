@@ -93,20 +93,19 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="~/js_boo/bootstrap.bundle.min.js"></script>
 
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.4/bootbox.min.js"></script>
+    <script src="~/js/site.js"></script>
+
     <script>
 
 
-        $(document).ready(function () {
-            
-            let cadena =$("#Usuario").val();
-            //alert(cadena);
-        });
 
         $("#forminicio").submit(function (evento) {
             // var form = $(this);
             //DESACTIVO LOS EVENTOS NATIVOS 
          evento.preventDefault();
-            /// console.log("soy",this);
+        var dialog = mostrarcarga();
 
         var data = { "usuario": $("#Usuario").val(), "pasword": $("#pasword").val() };
         //var dialog = mostrarcarga();
@@ -119,23 +118,26 @@
             data: data,
 
             success: function (datos) {
-              
+                dialog.modal('hide');
                 if (datos.success) {
                    
                      let url = '@Url.Action("Index", "Home")';
                      window.location.href = url;
                 }
                 else {
-                   alert("errr");
-                }
-
+                    bootbox.alert({
+                    message: datos.error,
+                    buttons: { ok: { label: "Aceptar" } }
+                });
+                
 
             }
+           }
         });
            
 
         });
-
+         
     </script>
 </body>
 </html>
