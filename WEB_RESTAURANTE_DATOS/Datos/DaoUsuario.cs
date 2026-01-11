@@ -18,15 +18,9 @@ namespace WEB_RESTAURANTE_DATOS.Datos
         }
 
         public  async Task<Usuarios> LoginUsuario(string usuario , string pasword)
-        {
-
-
-            //List<Clientes> model = new List<Clientes>();
-
-            //model = await context.Cliente.ToListAsync();
+        {  
             Usuarios model;
-            //var clave = Encrypt.GetSHA256(password);
-
+         
             model = await context.Usuario.Where(x => x.Nombre == usuario && x.Pasword == pasword).FirstOrDefaultAsync();
             
 

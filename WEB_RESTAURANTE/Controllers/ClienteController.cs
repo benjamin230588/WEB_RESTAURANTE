@@ -19,14 +19,14 @@ namespace WEB_RESTAURANTE.Controllers
 
             var clientes = await dao.ListaCategoria();
 
-            return View();
+            return View("ClienteIndex");
         }
 
         public async Task<IActionResult> Form()
         {
             
 
-            return View();
+            return View("FormCliente");
         }
     }
 }

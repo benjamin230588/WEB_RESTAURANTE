@@ -1,0 +1,325 @@
+﻿
+@{
+    ViewBag.Title= "Cliente";
+}
+@section styles
+{
+  </<style>
+           
+
+
+  </style>
+                
+}
+ 
+
+<div class="mdc-card">
+
+    <div style="float:right">
+        <span>
+            <a style="font-size:15px" class="btn btn-success btn-rounded" href="@Url.Action("Form","Cliente")" title="Nuevo"><i class="fas fa-plus"></i> Nuevo </a>
+
+        </span>
+    </div>
+
+
+    <h2 class="mb-4">Lista de Averias</h2>
+
+
+
+    <form autocomplete="off">
+        <div class="row">
+            
+                    <div class="col-md-2">
+                        <label for="Fdesde">Desde</label>
+                        <input type="text" id="Fdesde" class="form-control"  />
+
+                    </div>
+                    <div class="col-md-2">
+                        <label for="Fhasta">Hasta</label>
+                        <input type="text" id="Fhasta" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="Codigo_estado">Cliente</label>
+                        <input type="text" id="txtcliente" class="form-control" value="" placeholder="Buscar Cliente" />
+
+                    </div>
+                    
+                    <div class="col-md-3">
+                         <label style="visibility: hidden"> Buscar</label>
+                        <input type="button" id="btnbuscarcliente" class="form-control btn btn-primary" value="Buscar" />
+
+                    </div>
+                    
+          </div>
+
+    </form>
+
+    <br />
+
+    <div class="table-responsive" >
+
+        <table class="table datatable-basic table-hover table-bordered" id="example" style="width:100%">
+            <thead class="table-dark">
+                <tr>
+                
+                    <th>Nro</th>
+                    <th>F.Registro</th>
+                    <th>Programada</th>
+                    <th>Hora</th>
+                    
+                    <th class="text-left">Cod&nbspCli</th>
+
+                    <th>Hora</th>
+
+                    <th class="text-left">Cod&nbspCli</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                   
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+                   
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr
+                  <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                  <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                  <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                  <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+                  <tr>
+
+                    <td>Nro</td>
+                    <td>F.Registro</td>
+                    <td>Programada</td>
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                    <td>Hora</td>
+
+                    <td class="text-left">Cod&nbspCli</td>
+
+                </tr>
+            </tbody>
+            <tfoot class="table-dark">
+                <tr>
+                    <th>Nro</th>
+                    <th>F.Registro</th>
+                    <th>Programada</th>
+                    <th>Hora</th>
+                    <th class="text-left">Cod&nbspCli</th>
+                    <th>Hora</th>
+                    <th class="text-left">Cod&nbspCli</th>     
+
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+
+</div>
+
+
+@section scripts
+{
+
+    <script>
+
+       $(document).ready(function () {
+
+          $('#example').DataTable({
+            language: {
+              url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
+            },
+            pageLength: 10,
+            lengthMenu: [5, 10, 25, 50],
+            ordering: true,
+            searching: false,
+            lengthChange: false,
+          });
+      
+
+        // $('#example').DataTable({
+        //     //estilos para botones de paginacion
+
+
+        //     "headerCallback": function (thead, data, start, end, display) {
+        //         // Personalizar el estilo de la cabecera
+        //         $(thead).find('th').css({
+        //             "background-color": "#455F7C", // Color de fondo de la cabecera
+        //             "color": "#fff", // Color del texto de la cabecera
+        //             "padding": "10px", // Espaciado interno de las celdas de la cabecera
+        //             "font-size": "12px", // Tamaño de fuente de la cabecera
+        //             "font-weight": "bold" // Peso de la fuente de la cabecera
+        //         });
+        //     },
+        //     "footerCallback": function (tfoot, data, start, end, display) {
+        //         // Personalizar el estilo del footer
+        //         $(tfoot).find('th').css({
+        //             "background-color": "#455F7C", // Color de fondo del footer
+        //             "color": "#fff", // Color del texto del footer
+        //             "padding": "10px", // Espaciado interno de las celdas del footer
+        //             "font-size": "12px", // Tamaño de fuente del footer
+        //             "font-weight": "bold" // Peso de la fuente del footer
+        //         });
+        //     },
+        //     "drawCallback": function (settings) {
+        //         // Personalizar el estilo de los botones de paginación
+        //         var paginationButtons = $(settings.nTableWrapper).find('.dataTables_paginate .paginate_button');
+        //         paginationButtons.each(function () {
+        //             $(this).css({
+        //                 "background-color": "#455F7C", // Color de fondo del botón de paginación
+        //                 "color": "#fff", // Color del texto del botón de paginación
+        //                 "border": "1px solid #455F7C", // Borde del botón de paginación
+        //                 "padding": "5px 10px", // Espaciado interno del botón de paginación
+        //                 "margin": "2px", // Margen entre los botones de paginación
+        //                 "border-radius": "5px" // Radio del borde del botón de paginación
+        //             });
+
+        //             // Al pasar el mouse por encima del botón
+        //             $(this).on('mouseover', function () {
+        //                 $(this).css({
+        //                     "background-color": "#455F7C", // Color de fondo al pasar el mouse por encima
+        //                     "cursor": "pointer" // Cambiar el cursor a pointer
+        //                 });
+        //             });
+
+
+
+
+        //             // Al salir el mouse del botón
+        //             $(this).on('mouseleave', function () {
+        //                 $(this).css({
+        //                     "background-color": "#455F7C" // Volver al color de fondo original
+
+        //                     , "color": "#fff", // Color del texto del botón de paginación
+        //                 });
+        //             });
+        //         });
+        //     }
+
+        //     //fin de estilos de paginacion
+
+
+        // });
+         });
+        
+          // $('#example').DataTable({
+          //   language: {
+          //     url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
+          //   },
+          //   pageLength: 10,
+          //   lengthMenu: [5, 10, 25, 50],
+          //   ordering: true,
+          //   searching: true
+          // });
+      
+          
+        
+    </script>
+}

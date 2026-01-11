@@ -3,7 +3,7 @@
 
 // Write your JavaScript code.
 function mostrarcarga() {
-    var alerta = bootbox.alert({
+    var alerta = bootbox.dialog({
         message: '<div class="text-center"><img src="/imagenes/cargar.gif" /> </div>',
         closeButton: false,
         buttons: {
