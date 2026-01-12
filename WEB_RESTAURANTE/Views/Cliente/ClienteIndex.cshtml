@@ -4,9 +4,17 @@
 }
 @section styles
 {
-  </<style>
+  <<style>
            
-
+       table tbody td {
+            padding: 6px !important;
+          
+        }
+           
+       table  th {
+            padding: 10px !important;
+          
+        }
 
   </style>
                 
@@ -244,82 +252,196 @@
           });
       
 
-        // $('#example').DataTable({
-        //     //estilos para botones de paginacion
-
-
-        //     "headerCallback": function (thead, data, start, end, display) {
-        //         // Personalizar el estilo de la cabecera
-        //         $(thead).find('th').css({
-        //             "background-color": "#455F7C", // Color de fondo de la cabecera
-        //             "color": "#fff", // Color del texto de la cabecera
-        //             "padding": "10px", // Espaciado interno de las celdas de la cabecera
-        //             "font-size": "12px", // Tamaño de fuente de la cabecera
-        //             "font-weight": "bold" // Peso de la fuente de la cabecera
-        //         });
-        //     },
-        //     "footerCallback": function (tfoot, data, start, end, display) {
-        //         // Personalizar el estilo del footer
-        //         $(tfoot).find('th').css({
-        //             "background-color": "#455F7C", // Color de fondo del footer
-        //             "color": "#fff", // Color del texto del footer
-        //             "padding": "10px", // Espaciado interno de las celdas del footer
-        //             "font-size": "12px", // Tamaño de fuente del footer
-        //             "font-weight": "bold" // Peso de la fuente del footer
-        //         });
-        //     },
-        //     "drawCallback": function (settings) {
-        //         // Personalizar el estilo de los botones de paginación
-        //         var paginationButtons = $(settings.nTableWrapper).find('.dataTables_paginate .paginate_button');
-        //         paginationButtons.each(function () {
-        //             $(this).css({
-        //                 "background-color": "#455F7C", // Color de fondo del botón de paginación
-        //                 "color": "#fff", // Color del texto del botón de paginación
-        //                 "border": "1px solid #455F7C", // Borde del botón de paginación
-        //                 "padding": "5px 10px", // Espaciado interno del botón de paginación
-        //                 "margin": "2px", // Margen entre los botones de paginación
-        //                 "border-radius": "5px" // Radio del borde del botón de paginación
-        //             });
-
-        //             // Al pasar el mouse por encima del botón
-        //             $(this).on('mouseover', function () {
-        //                 $(this).css({
-        //                     "background-color": "#455F7C", // Color de fondo al pasar el mouse por encima
-        //                     "cursor": "pointer" // Cambiar el cursor a pointer
-        //                 });
-        //             });
-
-
-
-
-        //             // Al salir el mouse del botón
-        //             $(this).on('mouseleave', function () {
-        //                 $(this).css({
-        //                     "background-color": "#455F7C" // Volver al color de fondo original
-
-        //                     , "color": "#fff", // Color del texto del botón de paginación
-        //                 });
-        //             });
-        //         });
-        //     }
-
-        //     //fin de estilos de paginacion
-
-
-        // });
+       
          });
         
-          // $('#example').DataTable({
-          //   language: {
-          //     url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
-          //   },
-          //   pageLength: 10,
-          //   lengthMenu: [5, 10, 25, 50],
-          //   ordering: true,
-          //   searching: true
-          // });
-      
           
+ function Listar_Cotizacion() {
+     let  isMobile = window.matchMedia("(max-width: 767px)").matches;
+     let codigofamilia = "0";
+     let tipocotizacion = $("#idtipoCotizacion").val();
+     let familiades = $('select[name="idfamilia"] option:selected').text();
+  if (familiades !== "Todos") {
+      codigofamilia = familiades;
+  }
+
+  let url = "@Url.Action("ListarCotizacion", "Cotizacion")";
+ // var data = { "prioridad": $("#idprioridad").val(), "codigofamilia": $("#idfamilia").val(), "codigocanal": $("#idcanalventa").val() };
+     var data = { "prioridad": $("#idprioridad").val(), "codigofamilia": $("#idfamilia").val(), "codigocanal": $("#idcanalventa").val(), "estado": $("#idestado").val(), "tipocotizacion": tipocotizacion, "operacion": $("#operacionventa").val() };
+    //let objet666 = mostrarcarga();
+
+  $.ajax({
+      url: url,
+
+      type: 'POST',
+      data: data, // Pasar los parámetros en el objeto de datos
+      dataType: 'json',
+      success: function (data) {
+          // Limpiar el DataTable antes de agregar nuevos datos
+          var dataTable = $('#example').DataTable();
+          dataTable.clear().draw();
+
+          // Destruir la instancia DataTable existente si ya existe
+          if (dataTable) {
+              dataTable.destroy();
+          }
+
+
+
+          // Agregar los nuevos datos al DataTable y dibujar el DataTable
+          var dataArr2 = [];
+          data.forEach(function (item) {
+              var formattedDate = formatsicer(item.DOCDATE);
+              var formattedDate1 = formatsicer(item.FVALIDOFERTA);
+              var rowData = [
+
+                  item.SERIEDOCNUM,
+
+                  formattedDate,
+                  formattedDate1,
+                  item.CARDNAME,
+                  item.IDCUIGESTOR,
+                  item.DESFORMAPAGO,
+
+                  item.DESCANALVENTA,
+                  item.VENDEDOR,
+                  item.MONEDA,
+                  item.SUBIMPORTE,
+                  item.IDPRIORIDAD,
+                  item.ESTADO,
+                  item.IDCOTIZACION,
+                  item.IDCOTIZACION,
+                  item.ESTADONOTAPEDIDO,
+                  item.RUCCODE
+
+
+              ];
+              dataArr2.push(rowData);
+
+
+          });
+          // Inicializar DataTable en el contenedor de la tabla
+          $('#example').DataTable({
+              responsive: false,
+              "language": {
+                  "lengthMenu": "Mostrar _MENU_ registros",
+                  "zeroRecords": "No se encontraron resultados",
+                  "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                  "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                  "infoFiltered": "(filtrado de _MAX_ registros en total)",
+                  "sSearch": "Buscar:",
+                  "oPaginate": {
+                      "sFirst": "Primero",
+                      "sLast": "Último",
+                      "sNext": "Siguiente",
+                      "sPrevious": "Anterior"
+                  },
+
+              },
+              dom: 'Bfrtip',
+              buttons: ['excel', 'pdf', 'print'],
+              columnDefs: [
+                  {
+                      targets: [1,2], render: $.fn.dataTable.render.moment('YYYY/MM/DD', "DD/MM/YYYY")
+                  },
+                  { targets: [9], className: 'text-right', render: $.fn.dataTable.render.number(',', '.', 0, '') },
+                  {
+                      targets: [10], render: function (data, type, row, meta) {
+                          if (data == 1) {
+
+                              res = "<span class='badge badge-success'>ALTA</span>";
+                          }
+                          else if (data == 2) {
+                              res = "<span class='badge badge-warning'>Medio</span>";
+                          }
+                          else if (data == 3) {
+                              res = "<span class='badge badge-danger'>Baja</span>";
+                          }
+                          else if (data == 4) {
+                              res = "<span>NO APLICA</span>";
+                          }
+
+                          return res;
+
+                      }
+                  },
+
+                  {
+                      targets: [11], render: function (data, type, row, meta) {
+                          if (data == 1) {
+
+                              res = "<span class='badge badge-success'>EMITIDO</span>";
+                          }
+                          else if (data == 2) {
+                              res = "<span class='badge badge-danger'>PENDIENTE</span>";
+                          }
+                          else if (data == 3) {
+                              res = "<span class='badge badge-primary'>ADJUDICADO</span>";
+                          }
+                          else if (data == 4) {
+                              res = "<span class='badge badge-warning'>PERDIDO</span>";
+                          }
+                          else if (data == 5) {
+                              res = "<span class='badge badge-secondary'>ANULADO</span>";
+                          }
+                          return res;
+
+                      }
+                  },
+                  {
+                      targets: [12], render: function (data, type, row, meta) {
+                           let codigoperfil =@CODPERFIL;
+                          let estadocot = row[11];
+                          let cotizacionvendedor = row[7];
+                           //console.log("row", row[9]);
+                          let estiloaprobacion = "";
+                          let estilopdf = "";
+                          let estiloedicion = "";
+
+                          if (estadocot == 1 || estadocot == 3 || estadocot == 4 || estadocot == 5) {
+                               estiloaprobacion = "isDisabled";
+                           }
+                          if (codigoperfil == 1) {
+                              estiloaprobacion = "isDisabled";
+                          }
+                          //else if (codigoperfil == 4 && cotizacionvendedor =='Oficina') {
+                          //    estiloaprobacion = "isDisabled";
+                          //}
+
+                          if (estadocot == 2 || estadocot == 5) {
+                              estilopdf = "isDisabled";
+                          }
+                          //if (estadocot == 3 || estadocot == 4 ) {
+                          //    estiloedicion = "isDisabled";
+                          //}
+
+                          return "<span class=" + estiloedicion + "  > <a class='btn btn-primary btn-smx editcoti' href='javascript:void(0)' title='Modificar' data-estadocotizacion=" + estadocot + " ><i class='fas fa-pen'></i></a></span>&nbsp " +
+                               "<span class=" + estiloaprobacion + " > <a class='btn btn-warning btn-smx' href=/Cotizacion/Aprobacion/" + data + " title='Aprobacion'><i class='fas fa-shopping-bag'></i></a></span>&nbsp " +
+                               " <span class=" + estilopdf + ">  <a href='javascript:void(0)' class='cotizacionpdf'  title='Pdf' ><img src='/images/pdf.png' /></a> <span >  "
+
+
+                      }
+                  },
+                  { targets: [15], className: 'oculta' },
+                  { targets: [13], className: 'oculta' },
+                  { targets: [14], className: 'oculta' },
+
+
+              ],
+              "order": [[1, "desc"]]
+          }).rows.add(dataArr2).draw();
+
+
+
+
+
+      },
+      error: function (error) {
+          console.log("eee",error);
+      }
+  });
+
+ }
         
     </script>
 }
