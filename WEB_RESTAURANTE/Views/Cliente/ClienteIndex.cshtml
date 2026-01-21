@@ -4,7 +4,7 @@
 }
 @section styles
 {
-  <<style>
+  <style>
            
        table tbody td {
             padding: 6px !important;
@@ -16,6 +16,11 @@
           
         }
 
+        .btn-smx {
+            padding: 4px 5px !important;
+            font-size: 8px !important;
+        }
+
   </style>
                 
 }
@@ -25,14 +30,14 @@
 
     <div style="float:right">
         <span>
-            <a style="font-size:15px" class="btn btn-success btn-rounded" href="@Url.Action("Form","Cliente")" title="Nuevo"><i class="fas fa-plus"></i> Nuevo </a>
+            <a style="font-size:15px" class="btn btn-success btn-rounded" href="@Url.Action("FormNuevo","Cliente")" title="Nuevo"><i class="fas fa-plus"></i> Nuevo </a>
 
         </span>
     </div>
 
 
     <h2 class="mb-4">Lista de Averias</h2>
-
+    <div>@ViewBag.usuario</div>
 
 
     <form autocomplete="off">
@@ -71,8 +76,8 @@
         <table class="table datatable-basic table-hover table-bordered" id="example" style="width:100%">
             <thead class="table-dark">
                 <tr>
-                
-                    <th>Nro</th>
+                    <th> Nro</th>
+                   
                     <th>F.Registro</th>
                     <th>Programada</th>
                     <th>Hora</th>
@@ -82,147 +87,22 @@
                     <th>Hora</th>
 
                     <th class="text-left">Cod&nbspCli</th>
-
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                   
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-                   
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr
-                  <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                  <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                  <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                  <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
-                  <tr>
-
-                    <td>Nro</td>
-                    <td>F.Registro</td>
-                    <td>Programada</td>
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                    <td>Hora</td>
-
-                    <td class="text-left">Cod&nbspCli</td>
-
-                </tr>
+               
             </tbody>
             <tfoot class="table-dark">
                 <tr>
-                    <th>Nro</th>
+                    <th> Nro</th>
                     <th>F.Registro</th>
                     <th>Programada</th>
                     <th>Hora</th>
                     <th class="text-left">Cod&nbspCli</th>
                     <th>Hora</th>
                     <th class="text-left">Cod&nbspCli</th>     
-
+                    <th></th>
                 </tr>
             </tfoot>
         </table>
@@ -240,44 +120,28 @@
 
        $(document).ready(function () {
 
-          $('#example').DataTable({
-            language: {
-              url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
-            },
-            pageLength: 10,
-            lengthMenu: [5, 10, 25, 50],
-            ordering: true,
-            searching: false,
-            lengthChange: false,
-          });
-      
+              Listar_Clientes();
 
-       
-         });
+      });
         
           
- function Listar_Cotizacion() {
+ function Listar_Clientes() {
      let  isMobile = window.matchMedia("(max-width: 767px)").matches;
-     let codigofamilia = "0";
-     let tipocotizacion = $("#idtipoCotizacion").val();
-     let familiades = $('select[name="idfamilia"] option:selected').text();
-  if (familiades !== "Todos") {
-      codigofamilia = familiades;
-  }
+    
 
-  let url = "@Url.Action("ListarCotizacion", "Cotizacion")";
+  let url = "@Url.Action("ListarClientes", "Cliente")";
  // var data = { "prioridad": $("#idprioridad").val(), "codigofamilia": $("#idfamilia").val(), "codigocanal": $("#idcanalventa").val() };
-     var data = { "prioridad": $("#idprioridad").val(), "codigofamilia": $("#idfamilia").val(), "codigocanal": $("#idcanalventa").val(), "estado": $("#idestado").val(), "tipocotizacion": tipocotizacion, "operacion": $("#operacionventa").val() };
+   // var data = { "prioridad": $("#idprioridad").val(), "codigofamilia": $("#idfamilia").val(), "codigocanal": $("#idcanalventa").val(), "estado": $("#idestado").val(), "tipocotizacion": tipocotizacion, "operacion": $("#operacionventa").val() };
     //let objet666 = mostrarcarga();
 
   $.ajax({
       url: url,
 
       type: 'POST',
-      data: data, // Pasar los parámetros en el objeto de datos
       dataType: 'json',
       success: function (data) {
           // Limpiar el DataTable antes de agregar nuevos datos
+          console.log("data",data);
           var dataTable = $('#example').DataTable();
           dataTable.clear().draw();
 
@@ -291,28 +155,22 @@
           // Agregar los nuevos datos al DataTable y dibujar el DataTable
           var dataArr2 = [];
           data.forEach(function (item) {
-              var formattedDate = formatsicer(item.DOCDATE);
-              var formattedDate1 = formatsicer(item.FVALIDOFERTA);
+              
               var rowData = [
 
-                  item.SERIEDOCNUM,
+                  item.Id,
 
-                  formattedDate,
-                  formattedDate1,
-                  item.CARDNAME,
-                  item.IDCUIGESTOR,
-                  item.DESFORMAPAGO,
+                  
+                  item.Nombre,
+                  item.Apellido,
+                  item.Direccion,
+                  item.Nombre,
+                  item.Apellido,
+                  item.Direccion,
+                  item.Id
 
-                  item.DESCANALVENTA,
-                  item.VENDEDOR,
-                  item.MONEDA,
-                  item.SUBIMPORTE,
-                  item.IDPRIORIDAD,
-                  item.ESTADO,
-                  item.IDCOTIZACION,
-                  item.IDCOTIZACION,
-                  item.ESTADONOTAPEDIDO,
-                  item.RUCCODE
+                  
+                 
 
 
               ];
@@ -320,9 +178,16 @@
 
 
           });
+                           console.log("array",dataArr2);
           // Inicializar DataTable en el contenedor de la tabla
-          $('#example').DataTable({
-              responsive: false,
+                 $('#example').DataTable({
+                             responsive: false,
+                             pageLength: 10,
+                   lengthMenu: [5, 10, 25, 50],
+                   ordering: true,
+                   searching: false,
+                   lengthChange: false,
+             
               "language": {
                   "lengthMenu": "Mostrar _MENU_ registros",
                   "zeroRecords": "No se encontraron resultados",
@@ -338,96 +203,15 @@
                   },
 
               },
-              dom: 'Bfrtip',
-              buttons: ['excel', 'pdf', 'print'],
-              columnDefs: [
-                  {
-                      targets: [1,2], render: $.fn.dataTable.render.moment('YYYY/MM/DD', "DD/MM/YYYY")
-                  },
-                  { targets: [9], className: 'text-right', render: $.fn.dataTable.render.number(',', '.', 0, '') },
-                  {
-                      targets: [10], render: function (data, type, row, meta) {
-                          if (data == 1) {
+                    columnDefs: [
+                               {
+                                   targets: [7] ,render: function (data, type, row, meta) {
 
-                              res = "<span class='badge badge-success'>ALTA</span>";
-                          }
-                          else if (data == 2) {
-                              res = "<span class='badge badge-warning'>Medio</span>";
-                          }
-                          else if (data == 3) {
-                              res = "<span class='badge badge-danger'>Baja</span>";
-                          }
-                          else if (data == 4) {
-                              res = "<span>NO APLICA</span>";
-                          }
+                                       return "<span> <a class='btn btn-primary btn-smx editcoti' href=/Cliente/FormEditar?id=" + data + " title='Modificar'><i class='fas fa-pen'></i></a></span>&nbsp ";
+                                   }
+                               }
 
-                          return res;
-
-                      }
-                  },
-
-                  {
-                      targets: [11], render: function (data, type, row, meta) {
-                          if (data == 1) {
-
-                              res = "<span class='badge badge-success'>EMITIDO</span>";
-                          }
-                          else if (data == 2) {
-                              res = "<span class='badge badge-danger'>PENDIENTE</span>";
-                          }
-                          else if (data == 3) {
-                              res = "<span class='badge badge-primary'>ADJUDICADO</span>";
-                          }
-                          else if (data == 4) {
-                              res = "<span class='badge badge-warning'>PERDIDO</span>";
-                          }
-                          else if (data == 5) {
-                              res = "<span class='badge badge-secondary'>ANULADO</span>";
-                          }
-                          return res;
-
-                      }
-                  },
-                  {
-                      targets: [12], render: function (data, type, row, meta) {
-                           let codigoperfil =@CODPERFIL;
-                          let estadocot = row[11];
-                          let cotizacionvendedor = row[7];
-                           //console.log("row", row[9]);
-                          let estiloaprobacion = "";
-                          let estilopdf = "";
-                          let estiloedicion = "";
-
-                          if (estadocot == 1 || estadocot == 3 || estadocot == 4 || estadocot == 5) {
-                               estiloaprobacion = "isDisabled";
-                           }
-                          if (codigoperfil == 1) {
-                              estiloaprobacion = "isDisabled";
-                          }
-                          //else if (codigoperfil == 4 && cotizacionvendedor =='Oficina') {
-                          //    estiloaprobacion = "isDisabled";
-                          //}
-
-                          if (estadocot == 2 || estadocot == 5) {
-                              estilopdf = "isDisabled";
-                          }
-                          //if (estadocot == 3 || estadocot == 4 ) {
-                          //    estiloedicion = "isDisabled";
-                          //}
-
-                          return "<span class=" + estiloedicion + "  > <a class='btn btn-primary btn-smx editcoti' href='javascript:void(0)' title='Modificar' data-estadocotizacion=" + estadocot + " ><i class='fas fa-pen'></i></a></span>&nbsp " +
-                               "<span class=" + estiloaprobacion + " > <a class='btn btn-warning btn-smx' href=/Cotizacion/Aprobacion/" + data + " title='Aprobacion'><i class='fas fa-shopping-bag'></i></a></span>&nbsp " +
-                               " <span class=" + estilopdf + ">  <a href='javascript:void(0)' class='cotizacionpdf'  title='Pdf' ><img src='/images/pdf.png' /></a> <span >  "
-
-
-                      }
-                  },
-                  { targets: [15], className: 'oculta' },
-                  { targets: [13], className: 'oculta' },
-                  { targets: [14], className: 'oculta' },
-
-
-              ],
+                              ],
               "order": [[1, "desc"]]
           }).rows.add(dataArr2).draw();
 
@@ -442,6 +226,14 @@
   });
 
  }
+
+    $('#btnbuscarcliente').on('click', function () {
+
+
+               Listar_Clientes();
+
+
+    });
         
     </script>
 }

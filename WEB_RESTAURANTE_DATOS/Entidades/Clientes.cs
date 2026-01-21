@@ -12,19 +12,19 @@ namespace WEB_RESTAURANTE_DATOS.Entidades
         public int Id { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string Nombre { get; set; }
+        public string? Nombre { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string Apellido { get; set; }
+        public string? Apellido { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public string Direccion { get; set; }
+        public string? Direccion { get; set; }
 
         [Column(TypeName = "varchar(50)")]
-        public string Destino { get; set; }
+        public string? Destino { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public string Destino3 { get; set; }
+        public string? Destino3 { get; set; }
         [Column(TypeName = "varchar(50)")]
-        public string Destino4 { get; set; }
+        public string? Destino4 { get; set; }
 
     }
 }

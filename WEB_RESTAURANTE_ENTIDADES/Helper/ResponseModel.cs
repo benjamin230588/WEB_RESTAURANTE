@@ -1,4 +1,10 @@
-﻿namespace WEB_RESTAURANTE.Helpers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WEB_RESTAURANTE_ENTIDADES.Helper
 {
     public class ResponseModel
     {

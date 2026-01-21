@@ -21,7 +21,7 @@ namespace WEB_RESTAURANTE_DATOS.Datos
         {  
             Usuarios model;
          
-            model = await context.Usuario.Where(x => x.Nombre == usuario && x.Pasword == pasword).FirstOrDefaultAsync();
+            model = await context.Usuario.Where(x => x.Usuario == usuario && x.Pasword == pasword).FirstOrDefaultAsync();
             
 
             return model;

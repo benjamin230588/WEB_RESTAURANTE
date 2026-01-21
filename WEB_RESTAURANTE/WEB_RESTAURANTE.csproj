@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WEB_RESTAURANTE_DATOS\WEB_RESTAURANTE_DATOS.csproj" />
+    <ProjectReference Include="..\WEB_RESTAURANTE_ENTIDADES\WEB_RESTAURANTE_ENTIDADES.csproj" />
   </ItemGroup>
 
 </Project>

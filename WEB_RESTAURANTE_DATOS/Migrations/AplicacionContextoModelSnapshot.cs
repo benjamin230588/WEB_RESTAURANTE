@@ -30,27 +30,21 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Destino")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Destino3")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Destino4")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
@@ -60,24 +54,28 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
 
             modelBuilder.Entity("WEB_RESTAURANTE_DATOS.Entidades.Usuarios", b =>
                 {
-                    b.Property<int>("idusuario")
+                    b.Property<int>("Idusuario")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idusuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idusuario"));
+
+                    b.Property<int?>("Idcorrelativo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Pasword")
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int?>("idcorrelativo")
-                        .HasColumnType("int");
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
-                    b.HasKey("idusuario");
+                    b.HasKey("Idusuario");
 
                     b.ToTable("Usuario");
                 });

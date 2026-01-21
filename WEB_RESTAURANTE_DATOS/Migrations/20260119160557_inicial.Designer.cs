@@ -11,8 +11,8 @@ using WEB_RESTAURANTE_DATOS;
 namespace WEB_RESTAURANTE_DATOS.Migrations
 {
     [DbContext(typeof(AplicacionContexto))]
-    [Migration("20251219213951_Inicial")]
-    partial class Inicial
+    [Migration("20260119160557_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,20 +33,54 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Apellido")
-                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Destino")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Destino3")
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Destino4")
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Cliente");
+                });
+
+            modelBuilder.Entity("WEB_RESTAURANTE_DATOS.Entidades.Usuarios", b =>
+                {
+                    b.Property<int>("Idusuario")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idusuario"));
+
+                    b.Property<int?>("Idcorrelativo")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Pasword")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
+
+                    b.HasKey("Idusuario");
+
+                    b.ToTable("Usuario");
                 });
 #pragma warning restore 612, 618
         }

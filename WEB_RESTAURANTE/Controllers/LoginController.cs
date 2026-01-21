@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
-using WEB_RESTAURANTE.Helpers;
 using WEB_RESTAURANTE_DATOS;
 using WEB_RESTAURANTE_DATOS.Datos;
 using WEB_RESTAURANTE_DATOS.Entidades;
+using WEB_RESTAURANTE_ENTIDADES.Helper;
+using WEB_RESTAURANTE_ENTIDADES.ViewModel;
 
 namespace WEB_RESTAURANTE.Controllers
 {
@@ -33,14 +35,20 @@ namespace WEB_RESTAURANTE.Controllers
                 //Thread.Sleep(20000);
                 //await Task.Delay(5000);
                 model = await dao.LoginUsuario(usuario, pasword);
+                var sesion = new LoginDto {Idusuario = model.Idusuario, Usuario = model.Usuario };
+                string objetosesion = JsonConvert.SerializeObject(sesion);
                 // sistema s web
                 if (model != null)
                 {
 
                     response.success = true;
                     response.error = "usuario encontrado";
+                    HttpContext.Session.SetString(Constantes.SESSION_USUARIO, objetosesion);
+
+                    //   Session["SESION"] = "hola";
 
 
+                    /// crear la sesion 
 
                 }
                 else
