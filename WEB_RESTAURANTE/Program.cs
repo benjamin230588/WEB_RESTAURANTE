@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews()
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
+
+
 builder.Services.AddDbContext<AplicacionContexto>(options =>
                           options.UseSqlServer("name=defaultConnection"));
 

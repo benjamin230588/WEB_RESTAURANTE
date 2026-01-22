@@ -17,11 +17,20 @@ namespace WEB_RESTAURANTE.Controllers
             this.context = context;
             
         }
-
-        public async Task<ActionResult> Index()
+        public Clientes Index23()
         {
             //var dao = new DaoCliente(context);
-
+            var obj = new Clientes() { Id = 1, Nombre = "delia" };
+            return obj;
+            //var clientes = await dao.ListaCategoria();
+            //ViewBag.usuario= HttpContext.Session.GetString("PERSONA");
+            //return View("ClienteIndex");
+        }
+        public  ActionResult Index()
+        {
+            //var dao = new DaoCliente(context);
+            //var obj = new Clientes() { Id = 1, Nombre = "delia" };
+            //return obj;
             //var clientes = await dao.ListaCategoria();
             //ViewBag.usuario= HttpContext.Session.GetString("PERSONA");
             return View("ClienteIndex");
