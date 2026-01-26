@@ -17,7 +17,7 @@ namespace WEB_RESTAURANTE.Controllers
             this.context = context;
 
         }
-
+        [HttpGet]
         public IActionResult Index()
         {
             return View();

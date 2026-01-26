@@ -17,15 +17,7 @@ namespace WEB_RESTAURANTE.Controllers
             this.context = context;
             
         }
-        public Clientes Index23()
-        {
-            //var dao = new DaoCliente(context);
-            var obj = new Clientes() { Id = 1, Nombre = "delia" };
-            return obj;
-            //var clientes = await dao.ListaCategoria();
-            //ViewBag.usuario= HttpContext.Session.GetString("PERSONA");
-            //return View("ClienteIndex");
-        }
+        [HttpGet]
         public  ActionResult Index()
         {
             //var dao = new DaoCliente(context);
@@ -45,7 +37,7 @@ namespace WEB_RESTAURANTE.Controllers
             return Json(clientes);
            
         }
-
+        [HttpGet]
         public ActionResult FormNuevo()
         {
             Clientes objeto = new Clientes();
@@ -53,6 +45,7 @@ namespace WEB_RESTAURANTE.Controllers
 
             return View("FormCliente",objeto);
         }
+        [HttpGet]
         public async Task<ActionResult> FormEditar(int id)
         {
            
