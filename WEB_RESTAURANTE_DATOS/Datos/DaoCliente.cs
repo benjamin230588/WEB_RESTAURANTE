@@ -18,17 +18,13 @@ namespace WEB_RESTAURANTE_DATOS.Datos
 
         }
 
-        public async Task<List<Clientes>> ListaCategoria()
+        public async Task<List<Clientes>> ListaCliente()
         {
 
 
             List<Clientes> model = new List<Clientes>();
 
             model = await context.Cliente.ToListAsync();
-
-
-
-
 
 
             return model;

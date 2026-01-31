@@ -32,7 +32,7 @@ namespace WEB_RESTAURANTE.Controllers
         {
             var dao = new DaoCliente(context);
 
-            var clientes = await dao.ListaCategoria();
+            var clientes = await dao.ListaCliente();
 
             return Json(clientes);
            
@@ -45,6 +45,18 @@ namespace WEB_RESTAURANTE.Controllers
 
             return View("FormCliente",objeto);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> FormEditar23(string cadena)
+        {
+
+            var dao = new DaoCliente(context);
+
+            var objeto = await dao.GetCliente(1);
+
+            return View("FormCliente", objeto);
+        }
+
         [HttpGet]
         public async Task<ActionResult> FormEditar(int id)
         {

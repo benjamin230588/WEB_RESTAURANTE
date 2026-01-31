@@ -27,7 +27,7 @@ namespace WEB_RESTAURANTE.Controllers
         public async Task<JsonResult> Inicio(String usuario, string pasword)
         {
 
-            var response = new ResponseModel("Home/Index");
+            var response = new ResponseModel();
             Usuarios model;
             try
             {

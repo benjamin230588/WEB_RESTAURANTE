@@ -36,7 +36,7 @@
     </div>
 
 
-    <h2 class="mb-4">Lista de Averias</h2>
+    <h2 class="mb-4">Lista de Clientes</h2>
     <div>@ViewBag.usuario</div>
 
 
@@ -78,16 +78,16 @@
                 <tr>
                     <th> Nro</th>
                    
-                    <th>F.Registro</th>
-                    <th>Programada</th>
-                    <th>Hora</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Direccion</th>
                     
-                    <th class="text-left">Cod&nbspCli</th>
+                    <th class="text-left">Destino</th>
 
-                    <th>Hora</th>
+                    <th>Destino</th>
 
-                    <th class="text-left">Cod&nbspCli</th>
-                    <th></th>
+                    <th class="text-left">Destino</th>
+                    <th>&nbsp&nbsp&nbsp</th>
                 </tr>
             </thead>
             <tbody>
@@ -96,13 +96,17 @@
             <tfoot class="table-dark">
                 <tr>
                     <th> Nro</th>
-                    <th>F.Registro</th>
-                    <th>Programada</th>
-                    <th>Hora</th>
-                    <th class="text-left">Cod&nbspCli</th>
-                    <th>Hora</th>
-                    <th class="text-left">Cod&nbspCli</th>     
-                    <th></th>
+
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+
+                    <th class="text-left">Destino</th>
+
+                    <th>Destino</th>
+
+                    <th class="text-left">Destino</th>
+                    <th>&nbsp&nbsp&nbsp</th>
                 </tr>
             </tfoot>
         </table>
@@ -207,7 +211,11 @@
                                {
                                    targets: [7] ,render: function (data, type, row, meta) {
 
-                                       return "<span> <a class='btn btn-primary btn-smx editcoti' href=/Cliente/FormEditar?id=" + data + " title='Modificar'><i class='fas fa-pen'></i></a></span>&nbsp ";
+                                           return `<span> <a class='btn btn-primary btn-smx editcoti' href='/Cliente/FormEditar?id=${data}' title='Modificar'><i class='fas fa-pen'></i></a></span>&nbsp
+                                                                       <span> <a class='btn btn-danger btn-smx elimina' href='javascript:void(0)' title='Eliminar'><i class='fas fa-trash-alt'></i></a></span>&nbsp `;
+                                       
+                                       
+                                       
                                    }
                                }
 
@@ -234,6 +242,52 @@
 
 
     });
+
+    $(document).on('click', 'a.elimina', function (event) {
+                   event.preventDefault();
+                   //$(this).parents("tr").remove();
+                    //var caja = document.getElementById(codigo_hijo);
+                   // var id =parseInt($(this).parents("tr").find("td").eq(0).html())
+                   //  var url = "@Url.Action("Eliminar", "Averias")";
+                   //  var data = {"id": id};
+
+                    bootbox.confirm({
+                              title: "Eliminar Cliente",
+                              message: "El Cliente se Eliminara. ¿Desea continuar?",
+                               buttons: {
+                                   cancel: {
+                                       label: '<i class="fa fa-times"></i> Cancelar'
+                                   },
+                                   confirm: {
+                                       label: '<i class="fa fa-check"></i> Confirmar'
+                                   }
+                               },
+                              callback:  function onConfirm(result) {
+                                  if (result) {
+                                        $.ajax({
+                                        url: url ,
+                                        type: "POST",
+                                        datatype: "json",
+                                        data: data,
+                                        success: function (datos) {
+
+                                         if (datos.success) {
+                                           redirectTo(datos.redirect);
+                                          } else {
+                                           bootbox.alert(datos.error);
+                                           }
+                                        }
+                                    });
+                                  } 
+                                  }
+                            
+
+                   });
+
+               
+
+
+               });
         
     </script>
 }

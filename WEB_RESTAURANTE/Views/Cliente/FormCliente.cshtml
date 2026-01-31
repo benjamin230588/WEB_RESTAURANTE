@@ -24,14 +24,26 @@
 }
 
 <div class="mdc-card">
-  <form id="form_cliente" action="@Url.Action("Grabar", "Averias")" method="post" autocomplete="off">
+    <div>
+        @if (Model.Id == 0)
+        {
+            <h3>Creacion de Cliente</h3>
+        }
+        else
+        {
+
+            <h3>Edicion  de Cliente</h3>
+        }
+        <br />
+    </div>
+  <form id="form_cliente" action="@Url.Action("Grabar", "Cliente")" method="post" autocomplete="off">
         @Html.HiddenFor(u => u.Id)
-    <div class="row g-3">
+    <div class="row">
 
         <div class="col-md-4  mb-3">
 
                 <label for="Longitud">Nombre</label>
-                <input type="text" value="@Model.Nombre" id="Nombre33" name="Nombre22" class='form-control' />
+                <input type="text" value="@Model.Nombre" id="Nombre" name="Nombre" class='form-control' />
 
 
         </div>
@@ -39,7 +51,7 @@
         <div class="col-md-4  mb-3">
 
                 <label for="Longitud">Apellido</label>
-                <input type="text" value="@Model.Apellido" id="Apellido33" name="Apellido222" class='form-control' />
+                <input type="text" value="@Model.Apellido" id="Apellido" name="Apellido" class='form-control' />
 
 
         </div>
@@ -83,7 +95,7 @@
     <br />
     <div>
         <button id="btngrabar" type="button" class="btn btn-primary btn-lg">Grabar</button>&nbsp&nbsp&nbsp&nbsp
-        <a href="@Url.Action("Index","Averias")" class="btn btn-secondary btn-lg">Regresar</a>
+        <a href="@Url.Action("Index","Cliente")" class="btn btn-secondary btn-lg">Regresar</a>
     </div>
 
     </form>
