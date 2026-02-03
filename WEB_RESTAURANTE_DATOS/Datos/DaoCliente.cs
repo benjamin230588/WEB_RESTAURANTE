@@ -81,5 +81,27 @@ namespace WEB_RESTAURANTE_DATOS.Datos
             return Rsp;
         }
 
+        public async Task<Respuesta> Eliminarliente(int id)
+        {
+            Respuesta Rsp = new Respuesta();
+
+
+            try
+            {
+                var model = context.Cliente.Where(x => x.Id == id).FirstOrDefault();
+                context.Cliente.Remove(model);
+                await context.SaveChangesAsync();
+
+                Rsp.estado = true;
+            }
+            catch (Exception ex)
+            {
+                Rsp.estado = false;
+                Rsp.mensaje = ex.Message;
+            }
+
+            return Rsp;
+        }
+
     }
 }

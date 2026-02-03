@@ -46,16 +46,7 @@ namespace WEB_RESTAURANTE.Controllers
             return View("FormCliente",objeto);
         }
 
-        [HttpGet]
-        public async Task<ActionResult> FormEditar23(string cadena)
-        {
-
-            var dao = new DaoCliente(context);
-
-            var objeto = await dao.GetCliente(1);
-
-            return View("FormCliente", objeto);
-        }
+       
 
         [HttpGet]
         public async Task<ActionResult> FormEditar(int id)
@@ -108,6 +99,43 @@ namespace WEB_RESTAURANTE.Controllers
                 response.error = ex.Message;
 
             }
+            return Json(response);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> Eliminar(int id)
+        {
+            var response = new ResponseModel("");
+           
+            try
+            {
+                var dao = new DaoCliente(context);
+                Respuesta Rspta;
+               
+                Rspta = await dao.Eliminarliente(id);
+                
+                if (Rspta.estado)
+                {
+                    response.success = true;
+                    response.error = "";
+                }
+                else
+                {
+                    response.success = false;
+                    response.error = Rspta.mensaje;
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                response.success = false;
+                response.error = ex.Message;
+
+            }
+
+
             return Json(response);
         }
     }

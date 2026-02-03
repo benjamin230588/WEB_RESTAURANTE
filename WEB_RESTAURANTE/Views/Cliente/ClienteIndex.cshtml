@@ -212,7 +212,7 @@
                                    targets: [7] ,render: function (data, type, row, meta) {
 
                                            return `<span> <a class='btn btn-primary btn-smx editcoti' href='/Cliente/FormEditar?id=${data}' title='Modificar'><i class='fas fa-pen'></i></a></span>&nbsp
-                                                                       <span> <a class='btn btn-danger btn-smx elimina' href='javascript:void(0)' title='Eliminar'><i class='fas fa-trash-alt'></i></a></span>&nbsp `;
+                                                   <span> <a class='btn btn-danger btn-smx elimina' href='javascript:void(0)' title='Eliminar'><i class='fas fa-trash-alt'></i></a></span>&nbsp `;
                                        
                                        
                                        
@@ -247,9 +247,9 @@
                    event.preventDefault();
                    //$(this).parents("tr").remove();
                     //var caja = document.getElementById(codigo_hijo);
-                   // var id =parseInt($(this).parents("tr").find("td").eq(0).html())
-                   //  var url = "@Url.Action("Eliminar", "Averias")";
-                   //  var data = {"id": id};
+                   var id =parseInt($(this).parents("tr").find("td").eq(0).html())
+                   var url = "@Url.Action("Eliminar", "Cliente")";
+                   var data = {"id": id};
 
                     bootbox.confirm({
                               title: "Eliminar Cliente",
@@ -272,10 +272,14 @@
                                         success: function (datos) {
 
                                          if (datos.success) {
-                                           redirectTo(datos.redirect);
+                                             let url = '@Url.Action("Index", "Cliente")';
+                                             window.location.href = url;
                                           } else {
-                                           bootbox.alert(datos.error);
-                                           }
+                                               bootbox.alert({
+                                                   message: datos.error,
+                                                   buttons: { ok: { label: "Aceptar" } }
+                                               });
+                                        }
                                         }
                                     });
                                   } 
