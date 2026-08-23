@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEB_RESTAURANTE_DATOS;
 
@@ -10,9 +11,11 @@ using WEB_RESTAURANTE_DATOS;
 namespace WEB_RESTAURANTE_DATOS.Migrations
 {
     [DbContext(typeof(AplicacionContexto))]
-    partial class AplicacionContextoModelSnapshot : ModelSnapshot
+    [Migration("20260810204113_segundo5")]
+    partial class segundo5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,10 +67,6 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nombre44")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 

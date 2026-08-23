@@ -13,6 +13,7 @@ namespace WEB_RESTAURANTE_DATOS.Entidades
 
         [Column(TypeName = "varchar(50)")]
         public string? Nombre { get; set; }
+      
 
         [Column(TypeName = "varchar(50)")]
         public string? Apellido { get; set; }

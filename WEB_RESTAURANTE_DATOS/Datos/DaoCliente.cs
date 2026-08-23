@@ -23,6 +23,7 @@ namespace WEB_RESTAURANTE_DATOS.Datos
 
 
             List<Clientes> model = new List<Clientes>();
+            
 
             model = await context.Cliente.ToListAsync();
 

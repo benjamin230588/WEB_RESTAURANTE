@@ -31,6 +31,8 @@ namespace WEB_RESTAURANTE_DATOS
 
         public DbSet<Usuarios> Usuario { get; set; }
 
+        public DbSet<Proveedores> Proveedor { get; set; }
+
 
 
 

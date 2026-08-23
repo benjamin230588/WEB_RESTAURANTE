@@ -35,20 +35,17 @@ namespace WEB_RESTAURANTE.Controllers
                 //Thread.Sleep(20000);
                 //await Task.Delay(5000);
                 model = await dao.LoginUsuario(usuario, pasword);
-                var sesion = new LoginDto {Idusuario = model.Idusuario, Usuario = model.Usuario };
-                string objetosesion = JsonConvert.SerializeObject(sesion);
+              //  model = null;
                 // sistema s web
                 if (model != null)
                 {
-
-                    response.success = true;
-                    response.error = "usuario encontrado";
+                    var sesion = new LoginDto { Idusuario = model.Idusuario, Usuario = model.Usuario };
+                    string objetosesion = JsonConvert.SerializeObject(sesion);
+                    
                     HttpContext.Session.SetString(Constantes.SESSION_USUARIO, objetosesion);
 
-                    //   Session["SESION"] = "hola";
-
-
-                    /// crear la sesion 
+                    response.success = true;
+                    response.respuesta = "usuario encontrado";
 
                 }
                 else
