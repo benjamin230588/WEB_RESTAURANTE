@@ -11,8 +11,8 @@ using WEB_RESTAURANTE_DATOS;
 namespace WEB_RESTAURANTE_DATOS.Migrations
 {
     [DbContext(typeof(AplicacionContexto))]
-    [Migration("20260810204902_segundo77")]
-    partial class segundo77
+    [Migration("20260823133041_cambio")]
+    partial class cambio
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,32 +57,19 @@ namespace WEB_RESTAURANTE_DATOS.Migrations
 
             modelBuilder.Entity("WEB_RESTAURANTE_DATOS.Entidades.Proveedores", b =>
                 {
-                    b.Property<int>("Idusuario")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idusuario"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("Idcorrelativo")
-                        .HasColumnType("int");
+                    b.Property<string>("Apellidos")
+                        .HasColumnType("varchar(200)");
 
                     b.Property<string>("Nombre")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Nombre44")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Pasword")
-                        .IsRequired()
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<string>("Usuario")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
-
-                    b.HasKey("Idusuario");
+                    b.HasKey("Id");
 
                     b.ToTable("Proveedor");
                 });

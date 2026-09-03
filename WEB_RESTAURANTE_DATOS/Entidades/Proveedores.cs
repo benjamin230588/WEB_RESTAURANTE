@@ -10,18 +10,15 @@ namespace WEB_RESTAURANTE_DATOS.Entidades
 {
     public class Proveedores
     {
-        [Key]
-        public int Idusuario { get; set; }
-        public Nullable<int> Idcorrelativo { get; set; }
-        [Column(TypeName = "varchar(50)")]
-        public string Usuario { get; set; }
-        [Column(TypeName = "varchar(20)")]
-        public string Pasword { get; set; }
+        
+        public int Id { get; set; }
+        
         [Column(TypeName = "varchar(100)")]
-        public string Nombre { get; set; }
-
-        [Column(TypeName = "varchar(100)")]
-        public string Nombre44 { get; set; }
+        public string? Nombre { get; set; }
+        [Column(TypeName = "varchar(200)")]
+        public string? Apellidos { get; set; }
+        
+       
 
     }
 }
